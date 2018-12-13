@@ -5,6 +5,7 @@ import copy
 class Chromosome:
     def __init__(self, phenotype, generation=0, rate=None):
         self.phenotype = phenotype
+        self.calculated = 0
         self.gene = bin(phenotype)
         self.generation = generation
         self.conventional_name = ""
@@ -31,11 +32,12 @@ class Chromosome:
 
 
 class GeneticAlgorithm:
-    def __init__(self):
-        self.min = 20
-        self.max = 40
-        self.step = 0.00001
+    def __init__(self, init_limit: int, final_limit: int, accuracy: float):
+        self.min = init_limit
+        self.max = final_limit
+        self.step = accuracy
         self.population = self._initial_population(self.min, self.max, 6)
+        self.half_value = 0
 
     @staticmethod
     def _initial_population(init_limit: int, final_limit: int, n: int) -> list:
@@ -111,6 +113,7 @@ class GeneticAlgorithm:
     def _crossover(self, population: list) -> list:
         c_pop = copy.copy(population)
         partners = []
+        new_populations = []
         while c_pop:
             pair = []
             # selection of partner for crossing
@@ -127,8 +130,9 @@ class GeneticAlgorithm:
             for instance in pair:
                 instance.phenotype = instance.phenotype & bitmask
                 instance.update_generation()
+                new_populations.append(instance)
 
-        return partners
+        return new_populations
 
     def mutation(self, x1, x2):
         pass
@@ -138,15 +142,15 @@ class GeneticAlgorithm:
 
 
 obj = GeneticAlgorithm()
-a = {"x1": 200, "x2":320, "x3":54, "x4": 76}
+# a = {"x1": 200, "x2":320, "x3":54, "x4": 76}
 # print(obj._initial_population(a))
 # print([i.conventional_name for i in obj.population])
 # print([i.conventional_name for i in obj._roulette(obj.population)])
-obj.population = obj._roulette(obj.population)
-pairs = [pair for pair in obj._crossover(obj.population)]
-# print(pairs)
-for pair in pairs:
-    print([i.conventional_name for i in pair])
-    mx = pair[0].phenotype if pair[0].phenotype >= pair[1].phenotype else pair[1].phenotype
-    print(obj._create_bitmask(mx))
+# obj.population = obj._roulette(obj.population)
+# pairs = [pair for pair in obj._crossover(obj.population)]
+# # print(pairs)
+# for pair in pairs:
+#     print([i.conventional_name for i in pair])
+#     mx = pair[0].phenotype if pair[0].phenotype >= pair[1].phenotype else pair[1].phenotype
+#     print(obj._create_bitmask(mx))
 
