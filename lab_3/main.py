@@ -106,7 +106,7 @@ class GeneticAlgorithm:
         bits = [32, 16, 8, 4, 2, 1]
         bit_mask = 0
 
-        point = random.randint(2, l-1)
+        point = random.randint(1, l-1)
         if crossover:
             for i in range(len(bits)-point):
                 bit_mask += bits[i]
@@ -160,6 +160,7 @@ class GeneticAlgorithm:
 
     def __call__(self, *args, **kwargs):
         cont = True
+        final_limit = self.final_limit
         max_value = 0
         while cont:
             for instance in self.do_live():
@@ -167,32 +168,15 @@ class GeneticAlgorithm:
                       f"phenotype: {instance.phenotype}, "
                       f"generation: {instance.generation}")
                 print(f"max value: {self.max_value}")
-                if instance.phenotype == self.final_limit:
-                    cont = False
-                    max_value = self.max_value
-                    break
+                print(f"final_limit: {final_limit} ::: {instance.phenotype == final_limit}")
 
-        print(f"\n MAX VALUE: {max_value}")
-
-
-
-
-
-
+                cont = False if instance.phenotype == final_limit else True
+                #     print("TUT")
+                #     cont = 0
+                #     break
 
 
 obj = GeneticAlgorithm(20, 40, 0.00005)
 obj()
-# print(obj.do_live())
-# a = {"x1": 200, "x2":320, "x3":54, "x4": 76}
-# print(obj._initial_population(a))
 
-# print([i.conventional_name for i in obj._roulette(obj.population)])
-# obj.population = obj._roulette(obj.population)
-# pairs = [pair for pair in obj._crossover(obj.population)]
-# print(pairs)
-# for pair in pairs:
-#     print([i.conventional_name for i in pair])
-#     mx = pair[0].phenotype if pair[0].phenotype >= pair[1].phenotype else pair[1].phenotype
-#     print(obj._create_bitmask(mx))
 
