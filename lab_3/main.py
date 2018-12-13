@@ -5,8 +5,8 @@ import copy
 class Chromosome:
     def __init__(self, phenotype, generation=0, rate=None):
         self.phenotype = phenotype
-        self.calculated = 0
         self.gene = bin(phenotype)
+        self.calculated = 0
         self.generation = generation
         self.conventional_name = ""
         self.rate = rate
@@ -32,12 +32,17 @@ class Chromosome:
 
 
 class GeneticAlgorithm:
-    def __init__(self, init_limit: int, final_limit: int, accuracy: float):
-        self.min = init_limit
-        self.max = final_limit
-        self.step = accuracy
-        self.population = self._initial_population(self.min, self.max, 6)
-        self.half_value = 0
+    def __init__(self, init_limit: int, final_limit: int, accuracy: float, population_number: int = 6):
+        self.init_limit = init_limit
+        self.final_limit = final_limit
+        self.accuracy = accuracy
+        self.population_number = population_number
+        self.population = self._initial_population(init_limit, final_limit, population_number)
+
+        self.values = []
+        self.max_value = 0
+        self.average = 0
+        self.probability_of_mutation = 0
 
     @staticmethod
     def _initial_population(init_limit: int, final_limit: int, n: int) -> list:
@@ -52,11 +57,11 @@ class GeneticAlgorithm:
         return population
 
     @staticmethod
-    def _calculation(z: float) -> float:
+    def calculation(z: float) -> float:
         return z / 7 + z ** 2 + z ** 3
 
     @staticmethod
-    def _roulette(population: list) -> list:
+    def roulette(population: list) -> list:
         instances_sum = 0
         new_population = []
         roulette = []
@@ -101,7 +106,7 @@ class GeneticAlgorithm:
         bits = [32, 16, 8, 4, 2, 1]
         bit_mask = 0
 
-        point = random.randint(1, l)
+        point = random.randint(2, l-1)
         if crossover:
             for i in range(len(bits)-point):
                 bit_mask += bits[i]
@@ -110,7 +115,7 @@ class GeneticAlgorithm:
 
         return bit_mask
 
-    def _crossover(self, population: list) -> list:
+    def crossover(self, population: list) -> list:
         c_pop = copy.copy(population)
         partners = []
         new_populations = []
@@ -129,26 +134,63 @@ class GeneticAlgorithm:
             bitmask = self._create_bitmask()
             for instance in pair:
                 instance.phenotype = instance.phenotype & bitmask
+                instance.gene = bin(instance.phenotype)
                 instance.update_generation()
                 new_populations.append(instance)
 
         return new_populations
 
-    def mutation(self, x1, x2):
+    def mutation(self, population: list) -> list:
+        # bits_numb = self.population_number * 6
+        # will_change_bit = round(bits_numb * self.probability_of_mutation)
+        # TODO
         pass
 
     def do_live(self):
-        pass
+        c_population = copy.copy(self.population)
+        for instance in c_population:
+            instance.calculated = self.calculation(instance.phenotype)
+            self.values.append(instance.calculated)
+
+        self.max_value = max(self.values)
+
+        after_roulete = self.roulette(c_population)
+        new_population = self.crossover(after_roulete)
+        return new_population
+
+    def __call__(self, *args, **kwargs):
+        cont = True
+        max_value = 0
+        while cont:
+            for instance in self.do_live():
+                print(f"name: {instance.conventional_name}, "
+                      f"phenotype: {instance.phenotype}, "
+                      f"generation: {instance.generation}")
+                print(f"max value: {self.max_value}")
+                if instance.phenotype == self.final_limit:
+                    cont = False
+                    max_value = self.max_value
+                    break
+
+        print(f"\n MAX VALUE: {max_value}")
 
 
-obj = GeneticAlgorithm()
+
+
+
+
+
+
+obj = GeneticAlgorithm(20, 40, 0.00005)
+obj()
+# print(obj.do_live())
 # a = {"x1": 200, "x2":320, "x3":54, "x4": 76}
 # print(obj._initial_population(a))
-# print([i.conventional_name for i in obj.population])
+
 # print([i.conventional_name for i in obj._roulette(obj.population)])
 # obj.population = obj._roulette(obj.population)
 # pairs = [pair for pair in obj._crossover(obj.population)]
-# # print(pairs)
+# print(pairs)
 # for pair in pairs:
 #     print([i.conventional_name for i in pair])
 #     mx = pair[0].phenotype if pair[0].phenotype >= pair[1].phenotype else pair[1].phenotype
