@@ -1,9 +1,6 @@
 import random
 import copy
 
-GENE = "bin"
-PHENOTYPE = "dec"
-
 
 class Chromosome:
     def __init__(self, phenotype, generation=0, rate=None):
@@ -23,6 +20,9 @@ class Chromosome:
         else:
             self.conventional_name = f"x{self.generation}-{self.phenotype}-{old_name[-1]}"
 
+    def update_generation(self):
+        self.generation += 1
+
     def __str__(self):
         return self.conventional_name
 
@@ -35,7 +35,7 @@ class GeneticAlgorithm:
         self.min = 20
         self.max = 40
         self.step = 0.00001
-        self.init_pop = self._initial_population(self.min, self.max, 6)
+        self.population = self._initial_population(self.min, self.max, 6)
 
     @staticmethod
     def _initial_population(init_limit: int, final_limit: int, n: int) -> list:
@@ -95,27 +95,58 @@ class GeneticAlgorithm:
         return new_population
 
     @staticmethod
-    def _crossover(population: dict) -> list:
-        list_pop = list(population.keys())
+    def _create_bitmask(l=6, crossover=True) -> int:
+        bits = [32, 16, 8, 4, 2, 1]
+        bit_mask = 0
+
+        point = random.randint(1, l)
+        if crossover:
+            for i in range(len(bits)-point):
+                bit_mask += bits[i]
+        else:
+            bit_mask = bits[point]
+
+        return bit_mask
+
+    def _crossover(self, population: list) -> list:
+        c_pop = copy.copy(population)
         partners = []
-        for i in range(len(list_pop) // 2):
-            partners.append([
-                list_pop.pop(random.choice(list_pop)),
-                list_pop.pop(random.choice(list_pop)),
-            ])
+        while c_pop:
+            pair = []
+            # selection of partner for crossing
+            numb = random.randint(0, len(c_pop)-1)
+            pair.append(c_pop.pop(numb))
+
+            numb = random.randint(0, len(c_pop)-1)
+            pair.append(c_pop.pop(numb))
+
+            partners.append(pair)
+
+        for pair in partners:
+            bitmask = self._create_bitmask()
+            for instance in pair:
+                instance.phenotype = instance.phenotype & bitmask
+                instance.update_generation()
+
         return partners
 
     def mutation(self, x1, x2):
         pass
 
-
-
-    def genetic(self):
+    def do_live(self):
         pass
 
 
 obj = GeneticAlgorithm()
 a = {"x1": 200, "x2":320, "x3":54, "x4": 76}
 # print(obj._initial_population(a))
-# print([i.conventional_name for i in obj.init_pop])
-print([i.conventional_name for i in obj._roulette(obj.init_pop)])
+# print([i.conventional_name for i in obj.population])
+# print([i.conventional_name for i in obj._roulette(obj.population)])
+obj.population = obj._roulette(obj.population)
+pairs = [pair for pair in obj._crossover(obj.population)]
+# print(pairs)
+for pair in pairs:
+    print([i.conventional_name for i in pair])
+    mx = pair[0].phenotype if pair[0].phenotype >= pair[1].phenotype else pair[1].phenotype
+    print(obj._create_bitmask(mx))
+
