@@ -1,0 +1,9 @@
+1:
+(exact) Y=3.141592653589793
+(aprox) Y=-3.510052579002981
+
+2:
+ancestorm("Tomas",X).
+X = "Sid"
+X = "Herbert"
+false

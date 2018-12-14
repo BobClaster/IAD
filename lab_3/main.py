@@ -48,7 +48,7 @@ class GeneticAlgorithm:
     def _initial_population(init_limit: int, final_limit: int, n: int) -> list:
         population = []
         generation = 0
-        for i in range(1, n+1):
+        for i in range(1, n + 1):
             instance = random.randint(init_limit, final_limit)
             if not (instance in population):
                 population.append(
@@ -106,9 +106,9 @@ class GeneticAlgorithm:
         bits = [32, 16, 8, 4, 2, 1]
         bit_mask = 0
 
-        point = random.randint(1, l-1)
+        point = random.randint(1, l - 1)
         if crossover:
-            for i in range(len(bits)-point):
+            for i in range(len(bits) - point):
                 bit_mask += bits[i]
         else:
             bit_mask = bits[point]
@@ -122,10 +122,10 @@ class GeneticAlgorithm:
         while c_pop:
             pair = []
             # selection of partner for crossing
-            numb = random.randint(0, len(c_pop)-1)
+            numb = random.randint(0, len(c_pop) - 1)
             pair.append(c_pop.pop(numb))
 
-            numb = random.randint(0, len(c_pop)-1)
+            numb = random.randint(0, len(c_pop) - 1)
             pair.append(c_pop.pop(numb))
 
             partners.append(pair)
@@ -170,13 +170,10 @@ class GeneticAlgorithm:
                 print(f"max value: {self.max_value}")
                 print(f"final_limit: {final_limit} ::: {instance.phenotype == final_limit}")
 
-                cont = False if instance.phenotype == final_limit else True
-                #     print("TUT")
-                #     cont = 0
-                #     break
+                if instance.phenotype == final_limit:
+                    cont = False
+                    break
 
 
 obj = GeneticAlgorithm(20, 40, 0.00005)
 obj()
-
-
