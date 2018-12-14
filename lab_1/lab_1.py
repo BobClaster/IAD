@@ -55,7 +55,7 @@ class Perceptron:
                     a += x[j] * Ws[j]
 
                 # calculate result
-                Y = 1 if a >= self.O else 0
+                Y = True if a >= self.O else False
                 sigma = T - Y
                 # a = round(a, 1)
 

@@ -1,8 +1,51 @@
-w1=0.1 | w2=0.2 | w3=0.3 | O=0.2 | x1=1 | x2=0 | x3=0 | a=0.1 | Y=0 | T=False | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
-w1=0.1 | w2=0.2 | w3=0.3 | O=0.2 | x1=0 | x2=1 | x3=0 | a=0.2 | Y=1 | T=False | n(T-Y)=-0.4 | sigma*w1=-0.1 | sigma*w2=-0.2 | sigma*w3=-0.3 | sigma*O=-0.2
-w1=0.1 | w2=-0.2 | w3=0.3 | O=0.2 | x1=0 | x2=0 | x3=1 | a=0.3 | Y=1 | T=True | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=-0.0 | sigma*w3=0.0 | sigma*O=0.0
-w1=0.1 | w2=-0.2 | w3=0.3 | O=0.2 | x1=1 | x2=1 | x3=0 | a=-0.1 | Y=0 | T=False | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=-0.0 | sigma*w3=0.0 | sigma*O=0.0
-w1=0.1 | w2=-0.2 | w3=0.3 | O=0.2 | x1=1 | x2=0 | x3=1 | a=0.4 | Y=1 | T=False | n(T-Y)=-0.4 | sigma*w1=-0.1 | sigma*w2=0.2 | sigma*w3=-0.3 | sigma*O=-0.2
-w1=-0.3 | w2=-0.2 | w3=-0.1 | O=0.2 | x1=0 | x2=1 | x3=1 | a=-0.3 | Y=0 | T=True | n(T-Y)=0.4 | sigma*w1=-0.3 | sigma*w2=-0.2 | sigma*w3=-0.1 | sigma*O=0.2
-w1=-0.3 | w2=0.2 | w3=0.3 | O=0.2 | x1=1 | x2=1 | x3=1 | a=0.2 | Y=1 | T=True | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+
+
+Step 1
+w1=0.1 | w2=0.2 | w3=0.3 | O=0.2 | x1=1 | x2=0 | x3=0 | a=0.1 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.1 | w2=0.2 | w3=0.3 | O=0.2 | x1=0 | x2=1 | x3=0 | a=0.2 | Y=True | T=False | n(T-Y)=-0.02 | sigma*w1=-0.1 | sigma*w2=-0.2 | sigma*w3=-0.3 | sigma*O=-0.2
+w1=0.1 | w2=0.18 | w3=0.3 | O=0.2 | x1=0 | x2=0 | x3=1 | a=0.3 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.1 | w2=0.18 | w3=0.3 | O=0.2 | x1=1 | x2=1 | x3=0 | a=0.28 | Y=True | T=False | n(T-Y)=-0.02 | sigma*w1=-0.1 | sigma*w2=-0.18 | sigma*w3=-0.3 | sigma*O=-0.2
+w1=0.08 | w2=0.16 | w3=0.3 | O=0.2 | x1=1 | x2=0 | x3=1 | a=0.38 | Y=True | T=False | n(T-Y)=-0.02 | sigma*w1=-0.08 | sigma*w2=-0.16 | sigma*w3=-0.3 | sigma*O=-0.2
+w1=0.06 | w2=0.16 | w3=0.28 | O=0.2 | x1=0 | x2=1 | x3=1 | a=0.44 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.06 | w2=0.16 | w3=0.28 | O=0.2 | x1=1 | x2=1 | x3=1 | a=0.5 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+
+
+Step 2
+w1=0.06 | w2=0.16 | w3=0.28 | O=0.2 | x1=1 | x2=0 | x3=0 | a=0.06 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.06 | w2=0.16 | w3=0.28 | O=0.2 | x1=0 | x2=1 | x3=0 | a=0.16 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.06 | w2=0.16 | w3=0.28 | O=0.2 | x1=0 | x2=0 | x3=1 | a=0.28 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.06 | w2=0.16 | w3=0.28 | O=0.2 | x1=1 | x2=1 | x3=0 | a=0.22 | Y=True | T=False | n(T-Y)=-0.02 | sigma*w1=-0.06 | sigma*w2=-0.16 | sigma*w3=-0.28 | sigma*O=-0.2
+w1=0.04 | w2=0.14 | w3=0.28 | O=0.2 | x1=1 | x2=0 | x3=1 | a=0.32 | Y=True | T=False | n(T-Y)=-0.02 | sigma*w1=-0.04 | sigma*w2=-0.14 | sigma*w3=-0.28 | sigma*O=-0.2
+w1=0.02 | w2=0.14 | w3=0.26 | O=0.2 | x1=0 | x2=1 | x3=1 | a=0.4 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.02 | w2=0.14 | w3=0.26 | O=0.2 | x1=1 | x2=1 | x3=1 | a=0.42 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+
+
+Step 3
+w1=0.02 | w2=0.14 | w3=0.26 | O=0.2 | x1=1 | x2=0 | x3=0 | a=0.02 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.02 | w2=0.14 | w3=0.26 | O=0.2 | x1=0 | x2=1 | x3=0 | a=0.14 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.02 | w2=0.14 | w3=0.26 | O=0.2 | x1=0 | x2=0 | x3=1 | a=0.26 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.02 | w2=0.14 | w3=0.26 | O=0.2 | x1=1 | x2=1 | x3=0 | a=0.16 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=0.02 | w2=0.14 | w3=0.26 | O=0.2 | x1=1 | x2=0 | x3=1 | a=0.28 | Y=True | T=False | n(T-Y)=-0.02 | sigma*w1=-0.02 | sigma*w2=-0.14 | sigma*w3=-0.26 | sigma*O=-0.2
+w1=-0.0 | w2=0.14 | w3=0.24 | O=0.2 | x1=0 | x2=1 | x3=1 | a=0.38 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.0 | w2=0.14 | w3=0.24 | O=0.2 | x1=1 | x2=1 | x3=1 | a=0.38 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+
+
+Step 4
+w1=-0.0 | w2=0.14 | w3=0.24 | O=0.2 | x1=1 | x2=0 | x3=0 | a=-0.0 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.0 | w2=0.14 | w3=0.24 | O=0.2 | x1=0 | x2=1 | x3=0 | a=0.14 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.0 | w2=0.14 | w3=0.24 | O=0.2 | x1=0 | x2=0 | x3=1 | a=0.24 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.0 | w2=0.14 | w3=0.24 | O=0.2 | x1=1 | x2=1 | x3=0 | a=0.14 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.0 | w2=0.14 | w3=0.24 | O=0.2 | x1=1 | x2=0 | x3=1 | a=0.24 | Y=True | T=False | n(T-Y)=-0.02 | sigma*w1=0.0 | sigma*w2=-0.14 | sigma*w3=-0.24 | sigma*O=-0.2
+w1=-0.02 | w2=0.14 | w3=0.22 | O=0.2 | x1=0 | x2=1 | x3=1 | a=0.36 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.02 | w2=0.14 | w3=0.22 | O=0.2 | x1=1 | x2=1 | x3=1 | a=0.34 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+
+
+Step 5
+w1=-0.02 | w2=0.14 | w3=0.22 | O=0.2 | x1=1 | x2=0 | x3=0 | a=-0.02 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.02 | w2=0.14 | w3=0.22 | O=0.2 | x1=0 | x2=1 | x3=0 | a=0.14 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.02 | w2=0.14 | w3=0.22 | O=0.2 | x1=0 | x2=0 | x3=1 | a=0.22 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.02 | w2=0.14 | w3=0.22 | O=0.2 | x1=1 | x2=1 | x3=0 | a=0.12 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.02 | w2=0.14 | w3=0.22 | O=0.2 | x1=1 | x2=0 | x3=1 | a=0.2 | Y=False | T=False | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.02 | w2=0.14 | w3=0.22 | O=0.2 | x1=0 | x2=1 | x3=1 | a=0.36 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
+w1=-0.02 | w2=0.14 | w3=0.22 | O=0.2 | x1=1 | x2=1 | x3=1 | a=0.34 | Y=True | T=True | n(T-Y)=0.0 | sigma*w1=-0.0 | sigma*w2=0.0 | sigma*w3=0.0 | sigma*O=0.0
 

@@ -32,13 +32,33 @@ class Chromosome:
 
 
 class GeneticAlgorithm:
-    def __init__(self, init_limit: int, final_limit: int, accuracy: float, population_number: int = 6):
+    def __init__(
+            self, init_limit: int, final_limit: int, accuracy: float, population_number: int = 6,
+            func: str = f"z / 7 + z ** 2 + z ** 3",
+            given_accuracy: int = None, number_of_iterations: int = 100
+
+    ):
+        """
+
+        :param init_limit:
+        :param final_limit:
+        :param accuracy:
+        :param population_number:
+
+        :param given_accuracy: value, for example [40]
+        :param number_of_iterations: Default: 100
+        """
         self.init_limit = init_limit
         self.final_limit = final_limit
         self.accuracy = accuracy
         self.population_number = population_number
         self.population = self._initial_population(init_limit, final_limit, population_number)
 
+        self.func = func
+
+        # if stop_condition and not number_of_iterations:
+            # raise Exception("")
+        #
         self.values = []
         self.max_value = 0
         self.average = 0
@@ -56,9 +76,9 @@ class GeneticAlgorithm:
                 )
         return population
 
-    @staticmethod
-    def calculation(z: float) -> float:
-        return z / 7 + z ** 2 + z ** 3
+    # @staticmethod
+    def calculation(self, z: float) -> float:
+        return eval(self.func.replace("z", z))
 
     @staticmethod
     def roulette(population: list) -> list:
