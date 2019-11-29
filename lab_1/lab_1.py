@@ -1,9 +1,14 @@
+"""
+    author: B. Korzhak
+    Dec. 12, 2018
+"""
+
 class Perceptron:
     def __init__(self):
-        self.x = [[1, 0, 0], [0, 1, 0], [0, 0, 1], [1, 1, 0], [1, 0, 1], [0, 1, 1], [1, 1, 1]]
-        self.n = [0.02, 0.05, 0.4]
+        self.x = [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1], [1, 0, 0], [1, 0, 1], [1, 1, 0]]
+        self.n = [0.3, 0.01, 0.02]
         self.w = [0.1, 0.2, 0.3]
-        self.O = 0.2
+        self.O = -0.2
         self.t = self._true_values_calc()
         self.result_of_learning = self._learning(self.x, self.w, self.t, self.n[0])
 
@@ -26,9 +31,8 @@ class Perceptron:
         :param x1, x2, x3: image
         :return: Boolean value is calculated by a logical function
         """
-        if (not x1 or x2) and x3:
-            return True
-        return False
+
+        return  (not ((x1 and x2) and not x3))
 
     def _learning(self, Xs: list, Ws: list, Ts: list, n: float) -> str:
         """
@@ -40,7 +44,8 @@ class Perceptron:
         :return: the result of training in a str
         """
         result = ""
-        true_values = step = 0
+        true_values = 0
+        step = 0
         while true_values < 7:
             true_values = 0
             step += 1
@@ -60,8 +65,7 @@ class Perceptron:
                 # a = round(a, 1)
 
                 result += f"w1={round(Ws[0],2)} | w2={round(Ws[1],2)} | w3={round(Ws[2],2)} | O={self.O} | x1={x[0]} | x2={x[1]} | x3={x[2]} | " \
-                          f"a={round(a,2)} | Y={Y} | T={T} | n(T-Y)={n*sigma} | sigma*w1={round(sigma*Ws[0],2)} | sigma*w2={round(sigma*Ws[1],2)} | " \
-                          f"sigma*w3={round(sigma*Ws[2],2)} | sigma*O={sigma*self.O}\n"
+                          f"a={round(a,2)} | Y={Y} | T={T}\n"
 
                 # adjustment of weighting factors
                 if Y != T:
